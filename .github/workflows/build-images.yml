@@ -19,7 +19,7 @@ jobs:
         registry:
           - context: basic-stream-service
             dockerfile: basic-stream-service/Dockerfile
-            registry_repo: basic-stream-service
+            name: basic-stream-service
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
@@ -36,4 +36,4 @@ jobs:
           context: ${{ matrix.registry.context }}
           file: ${{ matrix.registry.dockerfile }}
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/viteo-${{ matrix.registry.registry_repo }}:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/viteo-${{ matrix.registry.name }}:latest

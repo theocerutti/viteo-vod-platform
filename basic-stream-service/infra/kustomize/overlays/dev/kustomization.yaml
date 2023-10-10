@@ -4,7 +4,7 @@ resources:
 namespace: basic-stream-service
 
 images:
-  - name: theocerutti/kubi-front
+  - name: theocerutti/viteo-basic-stream-service
     newTag: latest
 
 configMapGenerator:

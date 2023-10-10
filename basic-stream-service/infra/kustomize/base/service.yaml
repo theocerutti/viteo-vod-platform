@@ -1,9 +1,6 @@
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app.kubernetes.io/component: basic-stream-service
-
   name: basic-stream-service
   namespace: basic-stream-service
 spec:
@@ -11,7 +8,7 @@ spec:
     - name: http
       port: 80
       protocol: TCP
-      targetPort: 50051
+      targetPort: 3000
   selector:
     app.name: basic-stream-service
   type: ClusterIP
