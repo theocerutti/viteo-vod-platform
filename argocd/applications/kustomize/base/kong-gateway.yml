@@ -6,13 +6,14 @@ metadata:
 spec:
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: kong-gatewaye
+    namespace: kong-gateway
   source:
     path: kong-gateway/infra/helm
     repoURL: https://github.com/theocerutti/viteo-vod-platform.git
     targetRevision: master
     helm:
-      values: values-dev.yaml
+      valueFiles:
+        - values-dev.yaml
   project: default
   syncPolicy:
     automated:

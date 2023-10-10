@@ -42,5 +42,5 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 Deploy an application
 
 ```bash
-kubectl apply -n argocd -f argocd/applications/dev/application.yaml
+kubectl apply -n argocd -k argocd/applications/kustomize/overlays/dev
 ```

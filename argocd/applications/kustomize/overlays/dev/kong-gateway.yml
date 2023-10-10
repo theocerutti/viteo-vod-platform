@@ -6,4 +6,5 @@ metadata:
 spec:
   source:
     helm:
-      values: values-dev.yaml
+      valueFiles:
+        - values-dev.yaml
