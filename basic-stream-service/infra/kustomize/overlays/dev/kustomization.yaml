@@ -1,0 +1,15 @@
+resources:
+  - ../../base
+
+namespace: basic-stream-service
+
+images:
+  - name: theocerutti/kubi-front
+    newTag: latest
+
+configMapGenerator:
+  - name: env-config
+    envs:
+      - dev.env
+
+patchesStrategicMerge: []

@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: basic-stream-service
+  namespace: argocd
+spec:
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: basic-stream-service
+  source:
+    path: basic-stream-service/infra/kustomize/overlays/dev
+    repoURL: https://github.com/theocerutti/viteo-vod-platform.git
+    targetRevision: master
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.name: basic-stream-service
+  name: basic-stream-service
+  namespace: basic-stream-service
+spec:
+  selector:
+    matchLabels:
+      app.name: basic-stream-service
+  template:
+    metadata:
+      labels:
+        app.name: basic-stream-service
+    spec:
+      containers:
+        - name: basic-stream-service
+          image: theocerutti/kubi-front:latest
+          ports:
+            - containerPort: 50051
+            - containerPort: 8080
+          env:
+            - name: ENVIRONMENT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-config
+                  key: ENVIRONMENT
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sh", "-c", "sleep 30"]
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: 250m
+              memory: 512Mi
