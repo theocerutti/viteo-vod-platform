@@ -1,0 +1,10 @@
+name: Test Projects
+description: Test all projects
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+    - name: Test basic-stream-service
+      uses: ./basic-stream-service/.github/actions/test
+    # here add other projects...

@@ -1,0 +1,16 @@
+name: Test basic-stream-service
+description: Test basic-stream-service
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: "20"
+    - run: npm install
+      shell: bash
+      working-directory: ./basic-stream-service
+    - run: npm test
+      shell: bash
+      working-directory: ./basic-stream-service
