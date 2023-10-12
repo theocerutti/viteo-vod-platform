@@ -12,4 +12,4 @@ configMapGenerator:
     envs:
       - dev.env
 
-patchesStrategicMerge: []
+patches: []

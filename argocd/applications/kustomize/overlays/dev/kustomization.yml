@@ -6,5 +6,5 @@ configMapGenerator:
     envs:
       - dev.env
 
-patchesStrategicMerge:
-  - kong-gateway.yml
+patches:
+  - path: kong-gateway.yml
