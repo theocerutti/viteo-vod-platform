@@ -12,6 +12,6 @@ ENV=dev
 #kubectl apply -k "argocd/applications/kustomize/overlays/$ENV"
 
 # Install microservices
+helm install kong --namespace kong --create-namespace --values "kong/infra/helm/values-$ENV.yaml" kong/infra/helm
 kubectl create namespace basic-stream-service
 kubectl apply -k "basic-stream-service/infra/kustomize/overlays/$ENV"
-helm install kong-gateway --namespace kong-gateway --create-namespace --values "kong-gateway/infra/helm/values-$ENV.yaml" kong-gateway/infra/helm

@@ -1,10 +1,5 @@
 resources:
   - ../../base
 
-configMapGenerator:
-  - name: env-config
-    envs:
-      - dev.env
-
 patches:
-  - path: kong-gateway.yml
+  - path: kong.yml

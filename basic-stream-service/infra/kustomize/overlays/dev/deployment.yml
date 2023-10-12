@@ -1,0 +1,12 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-stream-service
+  namespace: basic-stream-service
+spec:
+  template:
+    spec:
+      containers:
+        - name: basic-stream-service
+          imagePullPolicy: Never # so that this is not pulled from registry

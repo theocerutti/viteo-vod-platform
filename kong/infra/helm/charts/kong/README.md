@@ -601,7 +601,6 @@ directory.
 | ---------------------------------- | ------------------------------------------------------------------------------------- | ------------------- |
 | image.repository                   | Kong image                                                                            | `kong`              |
 | image.tag                          | Kong image version                                                                    | `3.4`               |
-| image.effectiveSemver              | Semantic version to use for version-dependent features (if `tag` is not a semver)     |                     |
 | image.pullPolicy                   | Image pull policy                                                                     | `IfNotPresent`      |
 | image.pullSecrets                  | Image pull secrets                                                                    | `null`              |
 | replicaCount                       | Kong instance count. It has no effect when `autoscaling.enabled` is set to true         | `1`                 |
@@ -745,7 +744,6 @@ section of `values.yaml` file:
 | admissionWebhook.certificate.secretName    | Name of the TLS secret for the provided webhook certificate                                                                                              |                                    |
 | admissionWebhook.certificate.caBundle      | PEM encoded CA bundle which will be used to validate the provided webhook certificate                                                                    |                                    |
 | admissionWebhook.namespaceSelector         | Add namespaceSelector to the webhook. Please go to [Kubernetes doc for the specs](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#matching-requests-namespaceselector)                                                                          |                                    |
-| admissionWebhook.timeoutSeconds            | Kubernetes `apiserver`'s timeout when running this webhook. Default: 10 seconds.                                                                         |                                    |
 | userDefinedVolumes                         | Create volumes. Please go to Kubernetes doc for the spec of the volumes                                                                                  |                                    |
 | userDefinedVolumeMounts                    | Create volumeMounts. Please go to Kubernetes doc for the spec of the volumeMounts                                                                        |                                    |
 | terminationGracePeriodSeconds              | Sets the [termination grace period](https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#hook-handler-execution) for Deployment pod | 30                                 |
@@ -814,7 +812,7 @@ You'll be able to configure this feature through configuration section under
   namespace. This is useful when consuming the `kong` chart as a subchart.
 
 Using this feature requires a split release installation of Gateways and Ingress Controller.
-For exemplar `values.yaml` files which use this feature please see: [examples README.md](example-values/README.md).
+For exemplar `values.yaml` files which use this feature please see: [examples README.md](./example-values/README.md).
 
 When using `gatewayDiscovery`, you should consider configuring the Admin service to use mTLS client verification to make
 this interface secure. Without that, anyone who can access the Admin API from inside the cluster can configure the Gateway
@@ -851,7 +849,7 @@ On the Gateway release side, set either `admin.tls.client.secretName` to the nam
 | autoscaling.maxReplicas            | Set maximum number of replicas                                                        | `5`                 |
 | autoscaling.behavior               | Sets the [behavior for scaling up and down](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#configurable-scaling-behavior) | `{}`                |
 | autoscaling.targetCPUUtilizationPercentage | Target Percentage for when autoscaling takes affect. Only used if cluster does not support `autoscaling/v2` or `autoscaling/v2beta2` | `80`  |
-| autoscaling.metrics                | metrics used for autoscaling for clusters that supports `autoscaling/v2` or `autoscaling/v2beta2`           | See [values.yaml](values-dev.yaml) |
+| autoscaling.metrics                | metrics used for autoscaling for clusters that supports `autoscaling/v2` or `autoscaling/v2beta2`           | See [values.yaml](values.yaml) |
 | updateStrategy                     | update strategy for deployment                                                        | `{}`                |
 | readinessProbe                     | Kong readiness probe                                                                  |                     |
 | livenessProbe                      | Kong liveness probe                                                                   |                     |
@@ -944,7 +942,7 @@ kong:
 For complete list of Kong configurations please check the
 [Kong configuration docs](https://docs.konghq.com/latest/configuration).
 
-> **Tip**: You can use the default [values.yaml](values-dev.yaml)
+> **Tip**: You can use the default [values.yaml](values.yaml)
 
 #### The `customEnv` section
 

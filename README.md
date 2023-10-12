@@ -96,6 +96,17 @@ Deploy an application
 kubectl apply -n argocd -k argocd/applications/kustomize/overlays/dev
 ```
 
+## Services
+
+### Kong Gateway
+
+This is the API Gateway of the project.
+
+Get the url of the gateway:
+```bash
+minikube service -n kong kong-gateway-proxy --url | head -1
+```
+
 ## How to add a microservice ?
 
 ### Create a new microservice

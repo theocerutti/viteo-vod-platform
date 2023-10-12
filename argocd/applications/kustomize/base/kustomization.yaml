@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
   - basic-stream-service.yml
-  - kong-gateway.yml
+  - kong.yml

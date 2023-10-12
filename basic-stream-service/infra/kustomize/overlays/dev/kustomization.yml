@@ -3,13 +3,10 @@ resources:
 
 namespace: basic-stream-service
 
-images:
-  - name: theocerutti/viteo-basic-stream-service
-    newTag: latest
-
 configMapGenerator:
   - name: env-config
     envs:
       - dev.env
 
-patches: []
+patches:
+  - path: deployment.yml

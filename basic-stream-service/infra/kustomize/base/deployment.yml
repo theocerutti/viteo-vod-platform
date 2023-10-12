@@ -21,8 +21,8 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: ENVIRONMENT
+            - name: ENV
               valueFrom:
                 configMapKeyRef:
                   name: env-config
-                  key: ENVIRONMENT
+                  key: ENV

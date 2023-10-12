@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: basic-stream-service
+  namespace: basic-stream-service
+  annotations:
+    konghq.com/strip-path: 'true'
+spec:
+  ingressClassName: kong
+  rules:
+    - http:
+        paths:
+          - path: /basic-stream-service
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: basic-stream-service
+                port:
+                  number: 80

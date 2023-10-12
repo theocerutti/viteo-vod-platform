@@ -4,11 +4,6 @@
 
 Nothing yet.
 
-## 2.29.0
-
-### Improvements
-* Make it possible to set the admission webhook's `timeoutSeconds`.
-
 ## 2.28.1
 
 ### Fixed
@@ -250,7 +245,7 @@ you are affected and should review [the 2.26 upgrade instructions](https://githu
   with community best practices.
   [#751](https://github.com/Kong/charts/pull/751)
 
-[kic_gateway_discovery_readme]: README.md#the-gatewaydiscovery-section
+[kic_gateway_discovery_readme]: ./README.md#the-gatewaydiscovery-section
 
 ## 2.16.5
 
