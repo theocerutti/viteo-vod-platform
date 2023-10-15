@@ -4,19 +4,19 @@
 
 ### Step 1
 
-Deploy an API Gateway and micro services to stream a video
--> argocd for the continous deployment of the kubernetes cluster
--> github actions to build images of microservices and tests all microservices
--> kong gateway setup
--> micro service of basic stream video
--> no authentication
--> stream a video on react app without any styling
--> no processing of the video (the video is already in the right format and already in the server)
--> full TCP
--> no GraphQL
--> no CDN
--> no hystrix
--> no monitoring
+Deploy an API Gateway and micro services to stream a video  
+-> argocd for the continous deployment of the kubernetes cluster  
+-> github actions to build images of microservices and tests all microservices  
+-> kong gateway setup  
+-> micro service of basic stream video  
+-> no authentication  
+-> stream a video on react app without any styling  
+-> no processing of the video (the video is already in the right format and already in the server)  
+-> full TCP  
+-> no GraphQL  
+-> no CDN  
+-> no hystrix  
+-> no monitoring  
 
 ### Step 2
 
@@ -75,6 +75,22 @@ minikube
 ```
 
 ## Services
+
+## GRPC communication
+
+TODO: We use hostPath to mount protobuf files to Kong Gateway.
+It creates some ugly issues:
+* minikube needs to mount the folder into its VM
+* hostPath needs absolute path so we can't deploy it to production as long as we use hostPath
+
+```bash
+minikube mount /home/theo/GITHUB/viteo-vod-platform/grpc-proto-shared/services:/home/theo/GITHUB/viteo-vod-platform/grpc-proto-shared/services
+```
+
+Make a request to a microservice (exemple with basic-stream-service):
+```bash
+grpcurl -plaintext -import-path services -proto ./grpc-proto-shared/services/basicstream/v1/app.proto basic-stream-service.local:<kong-proxy-port> basicstream.v1.AppService/GetHello
+```
 
 ## ArgoCD
 

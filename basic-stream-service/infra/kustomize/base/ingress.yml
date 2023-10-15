@@ -1,19 +1,52 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: basic-stream-service
   namespace: basic-stream-service
   annotations:
-    konghq.com/strip-path: 'true'
+    konghq.com/protocols: http
+    konghq.com/plugins: basic-streaming-service-grpc-gateway
 spec:
   ingressClassName: kong
   rules:
-    - http:
+    - host: basic-stream-service.local
+      http:
         paths:
-          - path: /basic-stream-service
+          - path: /
             pathType: ImplementationSpecific
             backend:
               service:
                 name: basic-stream-service
                 port:
                   number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: basic-stream-service-grpc
+  namespace: basic-stream-service
+  annotations:
+    konghq.com/protocols: grpc
+spec:
+  ingressClassName: kong
+  rules:
+    - host: basic-stream-service-grpc.local
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: basic-stream-service
+                port:
+                  number: 80
+---
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: basic-streaming-service-grpc-gateway
+  namespace: basic-stream-service
+plugin: grpc-gateway
+config:
+  proto: /mnt/protobufs/basicstream/v1/app.proto

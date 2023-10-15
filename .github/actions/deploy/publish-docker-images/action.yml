@@ -1,4 +1,5 @@
 name: Publish Docker image
+description: Publish a docker image
 
 inputs:
   project:

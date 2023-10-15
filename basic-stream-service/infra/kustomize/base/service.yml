@@ -3,11 +3,12 @@ kind: Service
 metadata:
   name: basic-stream-service
   namespace: basic-stream-service
+  annotations:
+    konghq.com/protocol: grpc
 spec:
   ports:
-    - name: http
+    - name: grpc
       port: 80
-      protocol: TCP
       targetPort: 3000
   selector:
     app.name: basic-stream-service

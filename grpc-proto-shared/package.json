@@ -1,0 +1,13 @@
+{
+  "name": "grpc-proto-shared",
+  "version": "1.0.0",
+  "description": "GRPC proto files and generated typescript files",
+  "scripts": {
+    "proto:generate": "mkdir -p ./proto-ts && protoc --experimental_allow_proto3_optional --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./proto-ts --proto_path=./services --ts_proto_opt=\"lowerCaseServiceMethods=true,outputEncodeMethods=false,outputJsonMethods=false,outputClientImpl=false,snakeToCamel=true\" $(find ./services -iname \"*.proto\")"
+  },
+  "author": "Théo Cerutti",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-proto": "^1.162.1"
+  }
+}

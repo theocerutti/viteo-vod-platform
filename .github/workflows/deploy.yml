@@ -16,3 +16,12 @@ jobs:
           project: ${{ matrix.project }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  publish-npm-package:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy/publish-npm-package
+        with:
+          project: grpc-proto-shared
+          before_hook_cmd: 'npm run proto:generate'
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
