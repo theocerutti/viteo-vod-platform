@@ -8,6 +8,7 @@ const protoImportPath = "../node_modules/grpc-proto-shared/services";
 const protoPath = "basicstream/v1/app.proto";
 const protoPackage = "basicstream.v1";
 
+// TODO: reflection should only be added for health routes
 export const grpcClientOptions: GrpcOptions = addReflectionToGrpcConfig({
   transport: Transport.GRPC,
   options: {
@@ -24,6 +25,8 @@ export const grpcClientOptions: GrpcOptions = addReflectionToGrpcConfig({
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, grpcClientOptions);
   await app.listen();
+  // const app = await NestFactory.create(AppModule);
+  // await app.listen(3000);
 }
 
 bootstrap();

@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+
+package basicstream.v1;
+
+service VideoService {
+  rpc StreamVideo (GetStreamVideoRequest) returns (GetStreamVideoResponse) {
+    option (google.api.http) = {
+      get: "/v1/video/{id}"
+    };
+  }
+}
+
+message GetStreamVideoRequest {
+  string id = 1;
+}
+
+message GetStreamVideoResponse {
+  google.protobuf.BytesValue data = 1;
+}

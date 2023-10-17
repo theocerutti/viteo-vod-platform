@@ -49,4 +49,4 @@ metadata:
   namespace: basic-stream-service
 plugin: grpc-gateway
 config:
-  proto: /mnt/protobufs/basicstream/v1/app.proto
+  proto: basicstream/v1/app.proto
