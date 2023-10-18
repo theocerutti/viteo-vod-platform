@@ -25,3 +25,12 @@ jobs:
           project: grpc-proto-shared
           before_hook_cmd: 'npm run proto:generate'
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  deploy-production-vercel-webapp:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy/vercel
+        with:
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

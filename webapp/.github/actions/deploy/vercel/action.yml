@@ -1,0 +1,26 @@
+name: Vercel Production Deployment
+description: Deploy a Vercel project preview
+
+inputs:
+  VERCEL_PROJECT_ID:
+    description: 'Vercel project ID'
+    required: true
+  VERCEL_ORG_ID:
+    description: 'Vercel organization ID'
+    required: true
+  VERCEL_TOKEN:
+    description: 'Vercel token'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v4
+    - name: Install Vercel CLI
+      run: npm install --global vercel@latest
+    - name: Pull Vercel Environment Information
+      run: vercel pull --yes --environment=production --token=${{ inputs.VERCEL_TOKEN }}
+    - name: Build Project Artifacts
+      run: vercel build --prod --token=${{ inputs.VERCEL_TOKEN }}
+    - name: Deploy Project Artifacts to Vercel
+      run: vercel deploy --prebuilt --prod --token=${{ inputs.VERCEL_TOKEN }}
