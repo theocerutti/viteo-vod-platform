@@ -1,18 +1,14 @@
-import React from "react";
-import AppBar from "@/components/reusable/layout/AppBar";
-import Footer from "@/components/reusable/layout/Footer";
+import React from 'react';
+import AppBar from '@/components/layout/AppBar';
+import Footer from '@/components/layout/Footer';
 
-const Layout = ({
-  children
-}: {
-  children: React.ReactNode
-}) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <>
-      <AppBar hasLogo mode="simple" />
+    <div>
+      <AppBar hasLogo mode='simple' />
       {children}
       <Footer />
-    </>
+    </div>
   );
 };
 

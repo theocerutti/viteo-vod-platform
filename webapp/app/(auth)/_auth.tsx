@@ -1,22 +1,21 @@
-import React from "react";
-import { Flex, FormControl, FormHelperText, FormLabel, Input, VStack } from "@chakra-ui/react";
+import React from 'react';
 
 const Auth = ({ mode }: { mode: string }) => {
   return (
-    <Flex justifyContent="center">
-      <VStack style={{ width: "50%" }}>
-        <FormControl>
-          <FormLabel>Email address</FormLabel>
-          <Input type="email" />
-          <FormHelperText>We'll never share your email.</FormHelperText>
-        </FormControl>
-        <FormControl>
-          <FormLabel>Email address</FormLabel>
-          <Input type="email" />
-          <FormHelperText>We'll never share your email.</FormHelperText>
-        </FormControl>
-      </VStack>
-    </Flex>
+    <div className='flex justify-center'>
+      <div className='w-50% flex flex-row'>
+        <form>
+          <label>Email address</label>
+          <input type='email' />
+          <p>We'll never share your email.</p>
+        </form>
+        <form>
+          <label>Email address</label>
+          <input type='email' />
+          <p>We'll never share your email.</p>
+        </form>
+      </div>
+    </div>
   );
 };
 
