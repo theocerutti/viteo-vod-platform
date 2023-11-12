@@ -3,6 +3,7 @@
 usage()
 {
   echo -e "Usage: ./$(basename "$0") [...OPTIONS]:\n"
+  echo "  --delete: Delete cluster"
   echo "  --full-setup: Additional config (add /etc/hosts config...)"
   exit 0
 }
@@ -23,7 +24,7 @@ is_in_or_exit()
 
 get_opts()
 {
-  if ! options=$(getopt -o h --long full-setup,env: -n 'start_cluster_locally' -- "$@"); then
+  if ! options=$(getopt -o h --long delete,full-setup,env: -n 'start_cluster_locally' -- "$@"); then
       exit 1
   fi
 
@@ -41,6 +42,7 @@ get_opts()
   while [ $# -gt 0 ]; do
       case $1 in
       --full-setup) full_setup=True ;;
+      --delete) should_delete=True ;;
       --env)
         is_in_or_exit "$2" "${envs[@]}"
         env="$2" ; shift ;;
@@ -53,6 +55,7 @@ get_opts()
 }
 
 full_setup=False
+should_delete=False
 env="dev"
 build_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
 
@@ -62,6 +65,11 @@ if [ $full_setup = "True" ]; then
   echo "Starting full setup in '$env' environment"
 else
   echo "Starting cluster (not full setup: skipping /etc/hosts update) in '$env' environment"
+fi
+
+if [ $should_delete = "True" ]; then
+  echo "Deleting cluster"
+  minikube delete -p minikube
 fi
 
 # Run minikube

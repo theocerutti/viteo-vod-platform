@@ -7,11 +7,7 @@ import "google/api/annotations.proto";
 package basicstream.v1;
 
 service VideoService {
-  rpc StreamVideo (GetStreamVideoRequest) returns (GetStreamVideoResponse) {
-    option (google.api.http) = {
-      get: "/v1/video/{id}"
-    };
-  }
+  rpc StreamVideo (GetStreamVideoRequest) returns (GetStreamVideoResponse);
 }
 
 message GetStreamVideoRequest {
@@ -19,5 +15,4 @@ message GetStreamVideoRequest {
 }
 
 message GetStreamVideoResponse {
-  google.protobuf.BytesValue data = 1;
 }

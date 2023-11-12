@@ -3,11 +3,10 @@
 export const protobufPackage = "basicstream.v1";
 
 export interface GetStreamVideoRequest {
-  id: number | undefined;
+  id: string;
 }
 
 export interface GetStreamVideoResponse {
-  data: Uint8Array | undefined;
 }
 
 export interface VideoService {

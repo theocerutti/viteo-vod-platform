@@ -9,9 +9,5 @@ import "basicstream/v1/video.proto";
 package basicstream.v1;
 
 service AppService {
-  rpc GetHello (google.protobuf.Empty) returns (google.protobuf.StringValue) {
-    option (google.api.http) = {
-      get: "/v1/"
-    };
-  }
+  rpc GetHello (google.protobuf.Empty) returns (google.protobuf.StringValue);
 }
