@@ -92,6 +92,14 @@ Make a request to a microservice (exemple with basic-stream-service):
 grpcurl -plaintext -import-path services -proto ./grpc-proto-shared/services/basicstream/v1/app.proto basic-stream-service.local:<kong-proxy-port> basicstream.v1.AppService/GetHello
 ```
 
+Or curl it:
+
+```bash
+curl -X POST basic-stream-service.local:30153/basicstream.v1.AppService/GetHello \
+ --header 'x-grpc: true' \
+ --header 'Content-Type: application/json'
+```
+
 ## ArgoCD
 
 Access it:

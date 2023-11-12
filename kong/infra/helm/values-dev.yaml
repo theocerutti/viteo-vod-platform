@@ -24,19 +24,13 @@ gateway:
   deployment:
     kong:
       enabled: true
-    # TODO: I did 2 volumes because kong grpc-gateway import other proto files from root folder of the proto path
     userDefinedVolumes:
      - name: "grpc-proto-shared-pvc"
        hostPath:
-         path: "/home/theo/GITHUB/viteo-vod-platform/grpc-proto-shared/services"
-     - name: "grpc-proto-shared-pvc-google"
-       hostPath:
-         path: "/home/theo/GITHUB/viteo-vod-platform/grpc-proto-shared/services/google"
+         path: "/usr/include/grpc-proto-shared/services"
     userDefinedVolumeMounts:
      - name: "grpc-proto-shared-pvc"
-       mountPath: "/mnt/protobufs"
-     - name: "grpc-proto-shared-pvc-google"
-       mountPath: "/usr/include/google"
+       mountPath: "/usr/include/"
 
   admin:
     enabled: true

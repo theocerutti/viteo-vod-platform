@@ -6,7 +6,7 @@ metadata:
   namespace: basic-stream-service
   annotations:
     konghq.com/protocols: http
-    konghq.com/plugins: basic-streaming-service-grpc-gateway
+    konghq.com/plugins: basic-streaming-service-grpc-web
 spec:
   ingressClassName: kong
   rules:
@@ -45,8 +45,8 @@ spec:
 apiVersion: configuration.konghq.com/v1
 kind: KongPlugin
 metadata:
-  name: basic-streaming-service-grpc-gateway
+  name: basic-streaming-service-grpc-web
   namespace: basic-stream-service
-plugin: grpc-gateway
+plugin: grpc-web
 config:
-  proto: /mnt/protobufs/basicstream/v1/app.proto
+  proto: basicstream/v1/app.proto

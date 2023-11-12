@@ -3,6 +3,7 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { grpcClientOptions } from "./main";
 import { GrpcReflectionModule } from "nestjs-grpc-reflection";
+import { VideoModule } from "./services/video/video.module";
 
 @Module({
   imports: [
@@ -12,7 +13,8 @@ import { GrpcReflectionModule } from "nestjs-grpc-reflection";
         return grpcClientOptions;
       },
       inject: []
-    })
+    }),
+    VideoModule
   ],
   controllers: [AppController],
   providers: [AppService]
