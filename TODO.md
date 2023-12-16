@@ -10,3 +10,5 @@
   -> https://stackoverflow.com/questions/72152120/how-to-handle-rpcexception-in-nestjs
 * understand how to hotreload/autocompile proto files in kube-gateway
 * make sure to generate proto ts files in CI
+
+test
