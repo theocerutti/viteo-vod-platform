@@ -9,3 +9,19 @@ Triggers:
 
 # Required - Define action configurations.
 Actions:
+  Build_f0:
+    Identifier: aws/build@v1
+
+    Inputs:
+      Sources:
+        - WorkflowSource # This specifies that the action requires this workflow as a source
+
+    Outputs:
+      AutoDiscoverReports:
+        Enabled: true
+        # Use as prefix for the report files
+        ReportNamePrefix: rpt
+
+    Configuration:
+      Steps:
+        - Run: echo "Hello, World!"
